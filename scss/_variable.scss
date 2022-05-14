@@ -1,29 +1,24 @@
 $colorPrimario: #fff;
-$colorSecundario: #004aad;
-$colorAcentos: #11bfbf;
-$colorAcento2: #7d7d7d;
-$fondoPrincipal: #000;
+$colorSecundario: #003EAD;
+$colorAcentos: #8C1B00;
+$colorAcento2: #CE7F3A;
+$colorTerciario: #1E9AEE;
+$fondoPrincipal: #0D0D0D;
 $ile: rgb(7, 174, 7);
 $fuente: "Montserrat";
-$fP: (
-    regular:400,
+$fP: (regular:400,
     medium:500,
-    bold:800
-);
-$fS: (
-    "xxl":32px,
+    bold:800);
+$fS: ("xxl":32px,
     "xl":26px,
     "l":22px,
     "m":18px,
-    "s":16px
-);
-$breakpoints: (
-    "xs":576px,
+    "s":16px);
+$breakpoints: ("xs":576px,
     "s":768px,
     "m":992px,
     "l":1200px,
-    "xl":1400px
-);
+    "xl":1400px);
 $tiempoCorto: 0.4s;
 $tiempoMedio: 0.7s;
 $tiempoLargo: 1.5s;

@@ -134,55 +134,55 @@ html de la tarjeta vertical
 
 */
 @font-face {
-  font-family: "gotham";
-  src: url("../fonts/Gotham-Book.5f08db62.otf");
+  font-family: "Firacode";
+  src: url("font\firaCode-VariableFont_wght.ttf");
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "gotham";
-  background-color: #000;
+  font-family: "Firacode";
+  background-color: #0D0D0D;
 }
 
 body {
-  background-color: #000;
+  background-color: #0D0D0D;
   color: #fff;
 }
 
 @keyframes progreso {
   0% {
-    background: linear-gradient(to right, #333333, gray 100%);
+    background: linear-gradient(to right, #404040, #8d8d8d 100%);
   }
   10% {
-    background: linear-gradient(to right, #333333, gray 90%);
+    background: linear-gradient(to right, #404040, #8d8d8d 90%);
   }
   20% {
-    background: linear-gradient(to right, #333333, gray 80%);
+    background: linear-gradient(to right, #404040, #8d8d8d 80%);
   }
   30% {
-    background: linear-gradient(to right, #333333, gray 70%);
+    background: linear-gradient(to right, #404040, #8d8d8d 70%);
   }
   50% {
-    background: linear-gradient(to right, #333333, gray 60%);
+    background: linear-gradient(to right, #404040, #8d8d8d 60%);
   }
   400% {
-    background: linear-gradient(to right, #333333, gray 50%);
+    background: linear-gradient(to right, #404040, #8d8d8d 50%);
   }
   60% {
-    background: linear-gradient(to right, #333333, gray 40%);
+    background: linear-gradient(to right, #404040, #8d8d8d 40%);
   }
   70% {
-    background: linear-gradient(to right, #333333, gray 30%);
+    background: linear-gradient(to right, #404040, #8d8d8d 30%);
   }
   80% {
-    background: linear-gradient(to right, #333333, gray 20%);
+    background: linear-gradient(to right, #404040, #8d8d8d 20%);
   }
   90% {
-    background: linear-gradient(to right, #333333, gray 10%);
+    background: linear-gradient(to right, #404040, #8d8d8d 10%);
   }
   100% {
-    background: linear-gradient(to right, #333333, gray 10%);
+    background: linear-gradient(to right, #404040, #8d8d8d 10%);
   }
 }
 @keyframes aparecer {
@@ -205,6 +205,8 @@ header img {
 header .mwrap {
   height: 100%;
   align-items: flex-end;
+  z-index: 2;
+  background-color: #0D0D0D;
 }
 header .mwrap ul {
   padding: 1rem;
@@ -214,7 +216,8 @@ header .mwrap ul li {
   text-align: left;
   color: #fff;
   list-style: none;
-  margin: 0 1.5rem;
+  margin: 0 1rem;
+  z-index: 2;
 }
 header .mwrap ul li a {
   text-decoration: none;
@@ -224,15 +227,29 @@ header .mwrap ul li a {
   text-align: left;
 }
 header .mwrap ul li a:hover {
-  color: #003f94;
+  color: #118de1;
   transition: color 0.7s ease;
 }
-header .mwrap ul li .drop:hover::after {
-  content: "▼";
+header .mwrap ul li .drop {
+  z-index: 4;
+}
+header .mwrap ul li .drop a {
+  z-index: 5;
+}
+header .mwrap ul li .drop:hover::before {
+  content: "{";
   font-size: 16px;
-  transform: scale(0.8);
   position: absolute;
-  color: #003f94;
+  font-weight: bolder;
+  transform: translateX(-8px);
+  color: #bf7230;
+}
+header .mwrap ul li .drop:hover::after {
+  content: "}";
+  font-size: 18px;
+  position: absolute;
+  color: #bf7230;
+  font-weight: bolder;
 }
 header .mwrap ul li .menu {
   position: absolute;
@@ -242,20 +259,21 @@ header .mwrap ul li .menu {
   padding: 0;
   padding-top: 1rem;
   margin: 0;
+  z-index: -1;
 }
 header .mwrap ul li .menu ul {
   text-align: left;
   align-items: flex-start;
   padding: 0px;
   margin: 0;
-  border: rgba(0, 74, 173, 0.7) solid 2px;
-  box-shadow: 2px 2px 15px #666666;
+  border: rgba(140, 27, 0, 0.7) solid 2px;
+  box-shadow: 2px 2px 15px #737373;
 }
 header .mwrap ul li .menu ul li {
   margin: 0;
-  background-color: #333333;
+  background-color: #0D0D0D;
   width: 100%;
-  border: rgba(0, 74, 173, 0.2) solid 2px;
+  border: rgba(206, 127, 58, 0.2) solid 2px;
   padding: 1rem;
 }
 header .mwrap ul li .menu ul li a {
@@ -263,21 +281,21 @@ header .mwrap ul li .menu ul li a {
   width: 100%;
 }
 header .mwrap ul li .menu ul li:hover {
-  background-color: #333333;
+  background-color: #404040;
   color: #000;
   transition: color 0.9s ease;
   animation-name: progreso;
   animation-direction: alternate;
   animation-delay: 200ms;
-  animation-duration: 1.3s;
+  animation-duration: 0.8s;
   animation-iteration-count: 1;
-  background-color: gray;
-  box-shadow: 2px 2px 30px rgba(0, 74, 173, 0.5);
+  background-color: #8d8d8d;
+  box-shadow: 2px 2px 30px rgba(0, 62, 173, 0.5);
   transition: background-color 0.7s ease;
   font-weight: bold;
 }
 header .mwrap ul li .menu ul li:hover a {
-  color: #003f94;
+  color: #731600;
   transition: background-color 0.4s ease;
   transition: color 0.9s ease;
   font-weight: bolder;

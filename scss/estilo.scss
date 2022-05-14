@@ -2,15 +2,15 @@
 @import 'componentes';
 
 @font-face {
-    font-family: "gotham";
-    src: url("../fonts/Gotham-Book.5f08db62.otf");
+    font-family: "Firacode";
+    src: url("font\FiraCode-VariableFont_wght.ttf");
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "gotham";
+    font-family: "Firacode";
     background-color: $fondoPrincipal;
 }
 
@@ -129,7 +129,7 @@ header {
                     text-align: left;
 
                     &:hover {
-                        color: darken($colorSecundario, 5%);
+                        color: darken($colorTerciario, 5%);
                         transition: color 0.7s ease;
                     }
 
@@ -144,22 +144,29 @@ header {
                     }
                 }
 
+                .drop:hover::before {
+                    content: '{';
+                    font-size: size(s);
+                    position: absolute;
+                    font-weight: bolder;
+                    transform: translateX(-8px);
+                    color: darken($colorAcento2, 5%);
+
+                }
 
                 .drop:hover::after {
-                    content: '▼';
-                    font-size: size(s);
-                    transform: scale(0.8);
+                    content: '}';
+                    font-size: size(m);
                     position: absolute;
-                    color: darken($colorSecundario, 5%);
+                    color: darken($colorAcento2, 5%);
+                    font-weight: bolder;
 
                 }
 
                 .menu {
                     @extend %fxcol;
-                    // background-color: lighten($fondoPrincipal, 30%);
                     position: absolute;
                     opacity: 0;
-                    // justify-content: flex-start;
                     float: left;
                     width: 20vw;
                     padding: 0;
@@ -173,7 +180,7 @@ header {
                         align-items: flex-start;
                         padding: 00px;
                         margin: 0;
-                        border: transparentize($colorSecundario, 0.3) solid 2px;
+                        border: transparentize($colorAcentos, 0.3) solid 2px;
                         box-shadow: 2px 2px 15px lighten($fondoPrincipal, 40%);
 
 
@@ -181,9 +188,9 @@ header {
                             @extend %fxcol;
 
                             margin: 0;
-                            background-color: lighten($fondoPrincipal, 20%);
+                            background-color: $fondoPrincipal;
                             width: 100%;
-                            border: transparentize($colorSecundario, 0.8) solid 2px;
+                            border: transparentize($colorAcento2, 0.8) solid 2px;
                             padding: 1rem;
 
 
@@ -204,7 +211,7 @@ header {
                                 animation-name: progreso;
                                 animation-direction: alternate;
                                 animation-delay: 200ms;
-                                animation-duration: 1.3s;
+                                animation-duration: 0.8s;
                                 animation-iteration-count: 1;
                                 background-color: lighten($fondoPrincipal, 50%);
                                 box-shadow: 2px 2px 30px transparentize($colorSecundario, 0.5);
@@ -214,7 +221,7 @@ header {
                             }
 
                             &:hover a {
-                                color: darken($colorSecundario, 5%);
+                                color: darken($colorAcentos, 5%);
 
 
                                 transition: background-color 0.4s ease;
