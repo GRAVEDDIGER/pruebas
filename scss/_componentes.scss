@@ -1,0 +1,819 @@
+/*COMPONENTES PRE DISEñADOS*/
+@import 'variable';
+
+.btn {
+    font-size: size(m);
+    display: flex;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    transition: all $tiempoMedio ease;
+}
+
+/*color fondo*/
+@mixin btn_outline($name, $cb, $fc, $bs) {
+    .btno_#{$name} {
+        color: $fc;
+        @extend .btn;
+        border: $cb solid calc(#{$bs});
+        border-radius: 10%;
+        box-shadow: ($bs*2) ($bs*2) 20px lighten($cb, 20%);
+        transition: all $tiempoCorto ease;
+        font-weight: peso(bold);
+
+        &:hover {
+            color: lighten($colorPrimario, 30%);
+            border: lighten($cb, 20%) solid calc(#{$bs} + 0.3px);
+            background-color: lighten($colorPrimario, 72%);
+
+
+        }
+
+        &:hover>a {
+            color: lighten($colorPrimario, 30%);
+
+        }
+
+        >a {
+            transition: all $tiempoCorto ease;
+            color: inherit;
+            width: 100%;
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 10px lighten($colorPrimario, 60%) inset;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+
+        @content;
+    }
+}
+
+@mixin btne_outline($name, $cb, $fc, $bs) {
+    .btneo_#{$name} {
+        color: $fc;
+        @extend .btn;
+        border: $cb solid calc(#{$bs});
+        border-radius: 10% 25%;
+        box-shadow: ($bs*2) ($bs*2) 20px lighten($cb, 20%);
+        transition: all $tiempoCorto ease;
+        font-weight: peso(bold);
+
+        &:hover {
+            color: lighten($colorPrimario, 30%);
+            border: lighten($cb, 20%) solid calc(#{$bs} + 0.3px);
+            background-color: lighten($colorPrimario, 72%);
+
+
+        }
+
+        &:hover>a {
+            color: lighten($colorPrimario, 30%);
+
+        }
+
+        >a {
+            transition: all $tiempoCorto ease;
+            color: inherit;
+            width: 100%;
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 10px lighten($colorPrimario, 60%) inset;
+        }
+
+        &:active>a {
+            box-shadow: none;
+        }
+
+        @content;
+    }
+}
+
+@mixin btn_solid($name, $bc, $bs) {
+
+    .btn_#{$name} {
+        @extend .btn;
+        color: set_color($bc);
+        border: set_color($bc) solid ($bs);
+        border-radius: 10%;
+        box-shadow: ($bs*2) ($bs*2) 10px lighten($bc, 10%);
+        background-color: $bc;
+
+        >a {
+            width: 100%;
+            color: set_color($bc);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: darken($bc, 15%);
+            background-color: invert($bc);
+            border: lighten(set_color($bc), 25%) solid calc(#{$bs} + 0.3px); // font-size: size(m)+2px;
+        }
+
+        &:hover>a {
+            color: $bc;
+
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 5px lighten(set_color($bc), 20%) inset;
+
+        }
+
+        &:active>a {
+            box-shadow: none;
+        }
+
+        @content;
+    }
+}
+
+@mixin btne_solid($name, $bc, $bs) {
+
+    .btne_#{$name} {
+        @extend .btn;
+        color: set_color($bc);
+        border: set_color($bc) solid ($bs);
+        border-radius: 10% 25%;
+        box-shadow: ($bs*2) ($bs*2) 10px lighten($bc, 10%);
+        background-color: $bc;
+
+        >a {
+            width: 100%;
+            color: set_color($bc);
+            box-shadow: none;
+        }
+
+        &:hover {
+            color: darken($bc, 15%);
+            background-color: invert($bc);
+            border: lighten(set_color($bc), 25%) solid calc(#{$bs} + 0.3px); // font-size: size(m)+2px;
+        }
+
+        &:hover>a {
+            color: lighten(set_color($bc), 25%);
+
+        }
+
+        &:active {
+            box-shadow: ($bs*2) ($bs*2) 5px lighten(set_color($bc), 20%) inset;
+
+        }
+
+        &:active>a {
+            box-shadow: none;
+        }
+
+        @content;
+    }
+}
+
+
+%mnu {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@mixin hamburguesa($bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem) {
+
+    .menu-wrap {
+        position: relative; //cambio
+        width: 60px !important;
+        height: 60px;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .toggler {
+            @extend %mnu;
+            z-index: 2;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            opacity: 0;
+
+
+        }
+
+        .toggler:checked~.menu {
+            visibility: visible;
+
+            >div {
+                transform: scale(1);
+                transition-duration: $tiempoMedio;
+
+                >div {
+                    opacity: 1;
+                    transition: opacity $tiempoCorto ease 0.4s;
+                }
+            }
+        }
+
+        .toggler:checked+.hamburger>div {
+            transform: rotate(135deg);
+
+        }
+
+        .toggler:checked+.hamburger>div:before,
+        .toggler:checked+.hamburger>div:after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+
+
+
+        .hamburger {
+            //contenedor de la hamburguesa
+            @extend %mnu;
+            z-index: 1;
+            width: 60px;
+            height: 60px;
+            padding: 1rem;
+            background: $bcolor;
+            border: $bMnu solid 2px;
+            box-shadow: 3px 3px 40px $bcolor;
+            border-radius: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                box-shadow: 3px 3px 15px $fcolor;
+                background-color: darken($bcolor, 30%);
+            }
+
+            div {
+                //linea central de la hamburguesa
+                position: relative;
+                flex: none;
+                width: 100%;
+                height: 2px;
+                background: $fcolor;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all $tiempoCorto ease;
+            }
+
+            //crea las 3 lineas de la hamburguesa
+            >div::after {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 2px;
+                background: inherit;
+                top: 10px;
+            }
+
+            >div::before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                top: -10px;
+                width: 100%;
+                height: 2px;
+                background: inherit;
+            }
+        }
+
+
+        .menu {
+            position: absolute; //cambio
+
+            @if $direccion==d {
+                right: calc(100% - 60px);
+            }
+
+            @else {
+                left: 100%;
+            }
+
+            border: $bcolor solid $borderTk;
+            border-radius: 3%;
+            box-shadow: 5px 5px 15px $bMnu;
+            transform: translatey(60px);
+            top: 0;
+            padding: 0;
+            margin: 0;
+
+            // left: 0;
+            @if $ancho==a {
+                width: auto;
+            }
+
+            @else {
+                width: $ancho;
+            }
+
+            height: auto; //100
+            visibility: hidden;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+
+            >div {
+                // define un fondo de pantalla para todo el menu
+                background: $bMnu;
+                width: 100%; ///  vh
+                height: auto; // vh
+                display: flex;
+                flex: none;
+                align-items: flex-start;
+                justify-content: flex-start;
+                transform: scale(0);
+                transition: all $tiempoCorto ease;
+
+
+                >div {
+                    //CONTENEDOR DEL MENU
+                    margin: 3px;
+                    text-align: center;
+                    max-width: 90vw;
+                    max-height: 100vh;
+                    opacity: 0;
+                    transition: opacity $tiempoCorto ease;
+                    width: 100%;
+                    color: $fcolor;
+
+                    ul {
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    >ul>li {
+                        //item
+
+                        margin: $marginItem;
+                        list-style: none;
+                        color: $fcolor; //revisar
+                        font-size: 1.5rem;
+                        width: 100% !important;
+                        padding: 0;
+                        padding: $pyItem $pxitem;
+
+                        >a {
+                            //propiedades del link
+                            text-decoration: none;
+                            transition: color $tiempoCorto ease;
+                            text-align: center;
+                            margin: 0 auto;
+
+                        }
+                    }
+                }
+            }
+
+            @include s {
+                width: 50vw
+            }
+
+            @include xs {
+                width: 70vw
+            }
+        }
+
+    }
+}
+
+/*
+PARAMETROS:
+$bcolor Determina el color del background de la hamburgesa 
+$fcolor Color de la hamburguesa
+$bMnu Borde del menu y background del submenu
+$direccion hacia donde sale la rama del submenu (r) para derecha otra cosa para izquierda
+$borderTk Grosor del borde del menu 
+$ancho ancho del menu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de la letra
+
+
+HTML MENU HAMBURGUESA
+<div class="menu-wrap">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger">
+                <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+
+                            <li class="  clase_de_boton"><a href="#">About</a></li>
+                            <li class="  clase_de_boton"><a href="#">Services</a></li>
+                            <li class="  clase_de_boton"><a href="#">Contact</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+*/
+
+@mixin drop($name, $bcolor, $fcolor, $bMnu, $direccion, $borderTk, $ancho, $pyItem, $pxitem, $marginItem, $fontsize) {
+    .drop_#{$name} {
+        @include fxc(col, nowrap);
+        position: relative;
+
+        @if $direccion==l {
+            >span::before {
+                display: inline-block;
+                content: "◄";
+                transition: all $tiempoMedio ease;
+                margin-right: 10px;
+                font-size: size(s);
+                z-index: 5;
+                color: setcolor($bcolor);
+
+            }
+        }
+
+        @else {
+            @if $direccion==r {
+                >span::after {
+                    display: inline-block;
+                    content: "►";
+                    margin-left: 10px;
+                    font-size: size(s);
+                    z-index: 5;
+                    color: setcolor($bcolor);
+                }
+
+            }
+
+            @else {
+                >span::after {
+                    display: inline-block;
+                    content: "►";
+                    transition: all $tiempoMedio ease;
+
+                    margin-left: 10px;
+                    font-size: size(s);
+                    z-index: 5;
+                    color: setcolor($bcolor);
+                }
+
+                >span::before {
+                    display: inline-block;
+                    content: "◄";
+                    transition: all $tiempoMedio ease;
+                    margin-right: 10px;
+                    font-size: size(s);
+                    z-index: 5;
+                    color: setcolor($bcolor);
+
+                }
+
+
+            }
+        }
+
+        >ul {
+            border-radius: 10% 25%;
+            ;
+        }
+
+        @if $direccion==l {
+            .toggler_#{$name}:checked~span::before {
+                transform: translateX(-20px);
+                transition: all $tiempoMedio ease;
+
+            }
+        }
+
+        @else {
+            @if $direccion==r {
+                .toggler_#{$name}:checked~span::after {
+                    transform: translateX(20px);
+                    transition: all $tiempoMedio ease;
+                }
+            }
+
+            @else {
+                @if $direccion==c {
+                    .toggler_#{$name}:checked~span::after {
+                        transform: rotate(90deg);
+                    }
+
+                    .toggler_#{$name}:checked~span::before {
+                        transform: rotate(-90deg);
+                    }
+
+                }
+
+            }
+        }
+
+
+    }
+
+    .submnu_#{$name} {
+        display: none;
+        opacity: 0;
+        background-color: $bMnu;
+        border: $bcolor solid $borderTk;
+        border-radius: 3%;
+        overflow: hidden;
+        height: 100%;
+        box-sizing: content-box;
+        list-style: none;
+        transition: opacity, transform 1s ease;
+        margin-bottom: 15px;
+
+        @if $ancho==a {
+            width: auto;
+        }
+
+        @else {
+            width: $ancho;
+        }
+
+        li {
+            list-style: none;
+            width: calc(90% - (#{$marginItem}*2));
+            $cuenta: calc(#{$pxitem} - (#{$marginItem}*2));
+            padding: $pyItem #{$cuenta};
+            margin: $marginItem;
+            z-index: 4;
+            border-radius: 10% 25%;
+
+        }
+
+        li>a {
+            text-decoration: none;
+            width: 100%;
+            margin: 0;
+            height: auto;
+            color: setcolor($bcolor); // revisar
+            list-style: none;
+            font-size: size($fontsize);
+        }
+
+    }
+
+
+    .toggler_#{$name} {
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 10% 25%;
+
+        left: 0;
+        top: 0;
+        z-index: 3;
+    }
+
+    .toggler_#{$name}:checked~ul {
+        @include fxc(col, 0);
+        opacity: 1;
+        min-width: 200px;
+        width: auto;
+        height: auto;
+
+        @if $direccion==l {
+            overflow: visible;
+            transition: all $tiempoMedio ease;
+            position: absolute;
+            top: 0;
+            right: calc(#{$borderTk} + #{$marginItem} + 100%);
+            transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem})));
+        }
+
+        @else {
+            @if $direccion==r {
+                transition: all $tiempoMedio ease;
+                overflow: visible;
+                position: absolute;
+                top: 0;
+                left: calc(#{$borderTk} + #{$marginItem} + 100%);
+                transform: translateY(calc(-1 * (#{$borderTk} + #{$marginItem})));
+            }
+
+            @else {
+                transition: all $tiempoMedio ease;
+                position: relative;
+                width: 100%;
+                border-radius: 0;
+            }
+
+            transition: all $tiempoLargo ease;
+
+            list-style: none;
+
+        }
+    }
+
+
+
+
+
+}
+
+/*
+PARAMETROS:
+$name Determina el 2do segmento del nombre del drop_NAME y del .submnu_NAME
+$bcolor Determina el color del borde del submenu
+$fcolor Font Color
+$bMnu Color de fondo del submenu
+$direccion hacia donde sale la rama del submenu l,r,c
+$borderTk Grosor del borde
+$ancho ancho del submenu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de fuente segun las habilitadas en variables s,m,l,xl,xxl
+html para el drop configurable
+
+                            <li class="btn_naranja drop_home" >
+                                <span>otro</span>
+                                <input type="checkbox" class="toggler_home" name="menu" id="home">
+                                <ul class="submnu_home">  
+                                    <li class="btn_sbm">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">3</a>
+                                        
+                                    </li>
+                                </ul>
+                            
+                            </li>
+
+*/
+
+@mixin card($name, $borderColor, $borderTk, $backCol, $fontSize, $fontColor, $ancho) {
+    .container_#{$name} {
+        @include fxc(col, 0);
+        border: $borderColor solid $borderTk;
+        border-radius: 3%;
+        background-color: $backCol;
+        box-shadow: 6px 6px 40px invert($backCol);
+        padding: 1rem;
+        width: $ancho;
+        line-height: 1.5;
+
+
+        .pic_#{$name} {
+            position: relative;
+            margin: 0;
+            border-radius: 3%;
+            padding: 0;
+            @include fxc(col, 0);
+            box-shadow: 4px 4px 15px invert($backCol);
+
+            >img {
+                display: flex;
+                width: calc(#{$ancho} - #{$borderTk} - 3rem);
+                border: white solid 3px;
+                border-radius: 3%;
+                align-items: stretch;
+                justify-content: stretch;
+                align-content: stretch;
+
+            }
+        }
+
+        .txt_#{$name} {
+            @include fxc(col, 0);
+            color: white;
+            margin: 1rem;
+
+            h2 {
+                margin-top: 1rem;
+                font-size: size($fontSize);
+                font-weight: 900;
+                color: $fontColor;
+            }
+
+            h3 {
+                font-size: size($fontSize) - 4px;
+                font-weight: 500;
+                color: $fontColor;
+                margin-bottom: 10px;
+            }
+
+            article {
+                font-size: size($fontSize) - 6px;
+                text-align: justify;
+                color: invert($backCol);
+                margin-bottom: 15px;
+            }
+        }
+
+        @include btn_solid(card_uno, lighten($backCol, 20%), 3px);
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+/*
+html de la tarjeta vertical 
+
+    <div class="container_uno"style="margin:20px;"><div class="pic_uno"><img src="https://placekitten.com/200/300"alt=""></div><div class="txt_uno"><h2>Titulo importante</h2><h3>Algo menos relevante</h3><article>Esse quibusdam cupiditate aliquid iusto quisquam,
+    perspiciatis corrupti labore eaque vitae hic,
+    alias totam,
+    dolores a maxime inventore quod ullam quas suscipit nulla consectetur atque enim ! Recusandae eum earum magni ! </article><a href=""class="btn_card_uno">Continuar</a><p></p></div></div>
+
+
+
+
+*/
+
+@mixin lcard($name, $borderColor, $borderTk, $backCol, $fontSize, $fontColor, $ancho) {
+    .lcard_#{$name} {
+        position: relative;
+        display: flow-root;
+        overflow: hidden;
+        width: $ancho;
+        box-shadow: 0 0 15px invert($backCol);
+        border: $borderColor solid $borderTk;
+        line-height: 1.5;
+        margin: 3px;
+        height: calc(#{$ancho} * 120 / 300);
+        $xsm: calc(#{$ancho} - bp(xs));
+
+        //condicional que chequea si el width inicial es ya demasiado pequeño para el display original
+        @if (#{$xsm} < 0) {
+            height: auto;
+        }
+
+
+
+        article {
+            height: inherit;
+
+            @if (#{$xsm} < 0) {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+            }
+
+            position: relative;
+        }
+
+        h2 {
+            font-size: size($fontSize);
+            color: $fontColor;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            font-size: calc(#{size($fontSize)} -4px);
+            color: $fontColor;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: calc(#{size($fontSize)} -6px);
+            color: invert($backCol);
+        }
+
+    }
+
+    .recorte {
+        float: left;
+        width: calc((#{$ancho} + 10px) * 3 / 5);
+        clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+        shape-outside: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+
+    }
+
+    .btn_cnt {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+    @include btn_solid($name, invert($backCol), 2px) {
+        position: absolute;
+        bottom: 3px;
+        text-decoration: none;
+        margin-right: 2px;
+        margin-bottom: 4px;
+        text-align: center;
+
+    }
+}

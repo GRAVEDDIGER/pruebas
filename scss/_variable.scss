@@ -1,0 +1,252 @@
+$colorPrimario: #fff;
+$colorSecundario: #dad5d5;
+$colorAcentos: #11bfbf;
+$colorAcento2: #7d7d7d;
+$fondoPrincipal: #000;
+$ile: rgb(7, 174, 7);
+$fuente: "Montserrat";
+$fP: (
+    regular:400,
+    medium:500,
+    bold:800
+);
+$fS: (
+    "xxl":32px,
+    "xl":26px,
+    "l":22px,
+    "m":18px,
+    "s":16px
+);
+$breakpoints: (
+    "xs":576px,
+    "s":768px,
+    "m":992px,
+    "l":1200px,
+    "xl":1400px
+);
+$tiempoCorto: 0.4s;
+$tiempoMedio: 0.7s;
+$tiempoLargo: 1.5s;
+
+%centroabs {
+    justify-content: center;
+    align-items: center;
+}
+
+%fxrow {
+    display: flex;
+    flex-direction: row;
+}
+%fxcol{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+@function peso($peso) {
+    /*funcion que determina el peso de las fuentes se pasa por parametro regular, medium o bold y reemplaza por el valor asigando arriba*/
+    @return map-get($fP, $peso);
+}
+
+@function bp($bpancho) {
+    @return map-get($breakpoints, $bpancho);
+}
+
+/* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
+@function size($size) {
+    @return map-get($fS, $size);
+}
+
+
+@mixin fxc($dir, $wrap) {
+    display: flex;
+
+    @if $dir==col {
+        flex-direction: column;
+    }
+
+    @else {
+        flex-direction: row;
+    }
+
+    @if $wrap==1 {
+        flex-wrap: wrap;
+    }
+
+    @else {
+        flex-wrap: nowrap;
+    }
+
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin fxd($dir, $wrap) {
+    display: flex;
+
+    @if $dir==col {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    @else {
+        flex-direction: row;
+        justify-content: right;
+    }
+
+    @if $wrap==1 {
+        flex-wrap: wrap;
+    }
+
+    @else {
+        flex-wrap: nowrap;
+    }
+}
+
+@mixin fxi($dir, $wrap) {
+    display: flex;
+
+    @if $dir==col {
+        flex-direction: column;
+        align-0items: flex-start;
+    }
+
+    @else {
+        flex-direction: row;
+        justify-content: left;
+    }
+
+    @if $wrap==1 {
+        flex-wrap: wrap;
+    }
+
+    @else {
+        flex-wrap: nowrap;
+    }
+}
+
+@mixin xl {
+    @media (max-width: 1400px) {
+        @content;
+    }
+}
+
+@mixin l {
+    @media (max-width:1200px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (max-width:992px) {
+        @content;
+    }
+}
+
+@mixin s {
+    @media (max-width:768px) {
+        @content;
+    }
+}
+
+@mixin xs {
+    @media (max-width:576px) {
+        @content;
+    }
+}
+
+@mixin xxs {
+    @media (max-width:480px) {
+        @content;
+    }
+}
+
+@function set_color($color) {
+    @return transparentize(invert($color), 0.15);
+
+}
+
+/*                                   MARGIN                           */
+@mixin m ($m) {
+    @if ($m==a) {
+        .m_#{$m} {
+            margin: auto;
+        }
+    }
+
+    @else {
+        m_#{$m} {
+            margin: $m;
+        }
+    }
+}
+
+@mixin mx ($m) {
+    @if ($m==a) {
+        .mx_#{$m} {
+            margin: auto;
+        }
+    }
+
+    @else {
+        .mx_#{$m} {
+            margin: $m;
+        }
+    }
+}
+
+@mixin my ($m) {
+    @if ($m==a) {
+        .my_#{$m} {
+            margin: auto inherit;
+        }
+    }
+
+    @else {
+        .my_#{$m} {
+            margin: $m inherit;
+        }
+    }
+}
+
+/*                                               PADDING                                */
+@mixin p ($m) {
+    @if ($m==a) {
+        .p_#{$m} {
+            padding: auto;
+        }
+    }
+
+    @else {
+        .p_#{$m} {
+            padding: $m;
+        }
+    }
+}
+
+@mixin px ($m) {
+    @if ($m==a) {
+        .px_#{$m} {
+            padding: auto;
+        }
+    }
+
+    @else {
+        .px_#{$m} {
+            padding: $m;
+        }
+    }
+}
+
+@mixin py ($m) {
+    @if ($m==a) {
+        .py_#{$m} {
+            padding: auto;
+        }
+    }
+
+    @else {
+        .py_#{$m} {
+            padding: $m;
+        }
+    }
+}

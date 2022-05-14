@@ -1,0 +1,178 @@
+@charset "UTF-8";
+header .mwrap ul {
+  justify-content: center;
+  align-items: center;
+}
+
+header .mwrap ul, header {
+  display: flex;
+  flex-direction: row;
+}
+
+/* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
+/*                                   MARGIN                           */
+/*                                               PADDING                                */
+/*COMPONENTES PRE DISEñADOS*/
+header .mwrap ul {
+  justify-content: center;
+  align-items: center;
+}
+
+header .mwrap ul, header {
+  display: flex;
+  flex-direction: row;
+}
+
+/* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
+/*                                   MARGIN                           */
+/*                                               PADDING                                */
+.btn {
+  font-size: 18px;
+  display: flex;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.7s ease;
+}
+
+/*color fondo*/
+/*
+PARAMETROS:
+$bcolor Determina el color del background de la hamburgesa 
+$fcolor Color de la hamburguesa
+$bMnu Borde del menu y background del submenu
+$direccion hacia donde sale la rama del submenu (r) para derecha otra cosa para izquierda
+$borderTk Grosor del borde del menu 
+$ancho ancho del menu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de la letra
+
+
+HTML MENU HAMBURGUESA
+<div class="menu-wrap">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger">
+                <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+
+                            <li class="  clase_de_boton"><a href="#">About</a></li>
+                            <li class="  clase_de_boton"><a href="#">Services</a></li>
+                            <li class="  clase_de_boton"><a href="#">Contact</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+*/
+/*
+PARAMETROS:
+$name Determina el 2do segmento del nombre del drop_NAME y del .submnu_NAME
+$bcolor Determina el color del borde del submenu
+$fcolor Font Color
+$bMnu Color de fondo del submenu
+$direccion hacia donde sale la rama del submenu l,r,c
+$borderTk Grosor del borde
+$ancho ancho del submenu (a es automatico)
+$pyItem Padding vertical de los items
+$pxitem Padding Horizontal de los items
+$marginItem Margen global de los items
+$fontsize Tamaño de fuente segun las habilitadas en variables s,m,l,xl,xxl
+html para el drop configurable
+
+                            <li class="btn_naranja drop_home" >
+                                <span>otro</span>
+                                <input type="checkbox" class="toggler_home" name="menu" id="home">
+                                <ul class="submnu_home">  
+                                    <li class="btn_sbm">
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li class="btn_sbm">
+                                        <a href="#">3</a>
+
+                                    </li>
+                                </ul>
+
+                            </li>
+
+*/
+/*
+html de la tarjeta vertical 
+
+    <div class="container_uno"style="margin:20px;"><div class="pic_uno"><img src="https://placekitten.com/200/300"alt=""></div><div class="txt_uno"><h2>Titulo importante</h2><h3>Algo menos relevante</h3><article>Esse quibusdam cupiditate aliquid iusto quisquam,
+    perspiciatis corrupti labore eaque vitae hic,
+    alias totam,
+    dolores a maxime inventore quod ullam quas suscipit nulla consectetur atque enim ! Recusandae eum earum magni ! </article><a href=""class="btn_card_uno">Continuar</a><p></p></div></div>
+
+
+
+
+*/
+@font-face {
+  font-family: "gotham";
+  src: url("../fonts/Gotham-Book.5f08db62.otf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "gotham";
+  background-color: #000;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+header {
+  justify-content: space-between;
+  align-items: flex-start;
+}
+header img {
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 135px;
+}
+header .mwrap {
+  height: 100%;
+  align-items: flex-end;
+}
+header .mwrap ul {
+  padding: 1rem;
+}
+header .mwrap ul li {
+  text-align: left;
+  color: #fff;
+  list-style: none;
+  margin: 0 1.5rem;
+}
+header .mwrap ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+  width: 100%;
+  text-align: left;
+}
+header .mwrap ul li a:hover {
+  color: #cccccc;
+}
+header .mwrap ul li a:hover::after {
+  content: " ▼";
+  color: #fff;
+}
+
+/*# sourceMappingURL=estilos.css.map */
