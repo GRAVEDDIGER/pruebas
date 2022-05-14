@@ -1,6 +1,5 @@
 const apareceArriba = idEtq => {
 const elemento =  document.getElementById(idEtq);
-// elemento.hidden=false;
 let clientrec = elemento.getBoundingClientRect()
 let pX =clientrec.left;
 let pY =clientrec.top;
@@ -8,15 +7,20 @@ let he=clientrec.height;
 
 pY=pY-he;
 elemento.style.top=pY+"px"
-elemento.style.opacity=1;
+let q=window.getComputedStyle(elemento).getPropertyValue("opacity")
+if (q !=0){elemento.style.opacity=0;}
 
-setInterval(()=>{
+let ada =setInterval(()=>{
+    q=window.getComputedStyle(elemento).getPropertyValue("opacity")
+    let op1  = Math.abs(1/(pY+21))//error aqui
+    console.log(q)
+    let opa =parseInt(q)+op1
+    elemento.style.opacity=opa;
     if (pY<21){
-    console.log(pY)
     pY++
         elemento.style.top=pY+"px"}
 
-    else {clearInterval();}
+    else {clearInterval(ada);}
 },2);
     
     
