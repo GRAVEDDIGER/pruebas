@@ -224,14 +224,15 @@ header .mwrap ul li a {
   text-align: left;
 }
 header .mwrap ul li a:hover {
-  color: #cccccc;
+  color: #003f94;
+  transition: color 0.7s ease;
 }
 header .mwrap ul li .drop:hover::after {
   content: "▼";
   font-size: 16px;
   transform: scale(0.8);
   position: absolute;
-  color: #fff;
+  color: #003f94;
 }
 header .mwrap ul li .menu {
   position: absolute;

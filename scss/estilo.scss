@@ -105,6 +105,8 @@ header {
     .mwrap {
         height: 100%;
         align-items: flex-end;
+        z-index: 2;
+        background-color: $fondoPrincipal;
 
         ul {
             @extend %fxrow;
@@ -116,7 +118,8 @@ header {
                 text-align: left;
                 color: $colorPrimario;
                 list-style: none;
-                margin: 0 1.5rem;
+                margin: 0 1rem;
+                z-index: 2;
 
                 a {
                     text-decoration: none;
@@ -126,12 +129,20 @@ header {
                     text-align: left;
 
                     &:hover {
-                        color: darken($colorPrimario, 20%);
+                        color: darken($colorSecundario, 5%);
+                        transition: color 0.7s ease;
                     }
 
 
                 }
 
+                .drop {
+                    z-index: 4;
+
+                    a {
+                        z-index: 5;
+                    }
+                }
 
 
                 .drop:hover::after {
@@ -139,7 +150,7 @@ header {
                     font-size: size(s);
                     transform: scale(0.8);
                     position: absolute;
-                    color: $colorPrimario;
+                    color: darken($colorSecundario, 5%);
 
                 }
 
@@ -154,6 +165,7 @@ header {
                     padding: 0;
                     padding-top: 1rem;
                     margin: 0;
+                    z-index: -1;
 
                     ul {
                         @extend %fxcol;
