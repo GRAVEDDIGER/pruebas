@@ -9,6 +9,12 @@ header .mwrap ul, header {
   flex-direction: row;
 }
 
+header .mwrap ul li .menu ul li, header .mwrap ul li .menu ul, header .mwrap ul li .menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
 /* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
 /*                                   MARGIN                           */
 /*                                               PADDING                                */
@@ -21,6 +27,12 @@ header .mwrap ul {
 header .mwrap ul, header {
   display: flex;
   flex-direction: row;
+}
+
+header .mwrap ul li .menu ul li, header .mwrap ul li .menu ul, header .mwrap ul li .menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 /* funcion que determina el tamaño de la fuente entre s m l xl y xxl*/
@@ -138,6 +150,49 @@ body {
   color: #fff;
 }
 
+@keyframes progreso {
+  0% {
+    background: linear-gradient(to right, #333333, gray 100%);
+  }
+  10% {
+    background: linear-gradient(to right, #333333, gray 90%);
+  }
+  20% {
+    background: linear-gradient(to right, #333333, gray 80%);
+  }
+  30% {
+    background: linear-gradient(to right, #333333, gray 70%);
+  }
+  50% {
+    background: linear-gradient(to right, #333333, gray 60%);
+  }
+  400% {
+    background: linear-gradient(to right, #333333, gray 50%);
+  }
+  60% {
+    background: linear-gradient(to right, #333333, gray 40%);
+  }
+  70% {
+    background: linear-gradient(to right, #333333, gray 30%);
+  }
+  80% {
+    background: linear-gradient(to right, #333333, gray 20%);
+  }
+  90% {
+    background: linear-gradient(to right, #333333, gray 10%);
+  }
+  100% {
+    background: linear-gradient(to right, #333333, gray 10%);
+  }
+}
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 header {
   justify-content: space-between;
   align-items: flex-start;
@@ -155,6 +210,7 @@ header .mwrap ul {
   padding: 1rem;
 }
 header .mwrap ul li {
+  position: relative;
   text-align: left;
   color: #fff;
   list-style: none;
@@ -170,9 +226,63 @@ header .mwrap ul li a {
 header .mwrap ul li a:hover {
   color: #cccccc;
 }
-header .mwrap ul li a:hover::after {
-  content: " ▼";
+header .mwrap ul li .drop:hover::after {
+  content: "▼";
+  font-size: 16px;
+  transform: scale(0.8);
+  position: absolute;
   color: #fff;
+}
+header .mwrap ul li .menu {
+  position: absolute;
+  opacity: 0;
+  float: left;
+  width: 20vw;
+  padding: 0;
+  padding-top: 1rem;
+  margin: 0;
+}
+header .mwrap ul li .menu ul {
+  text-align: left;
+  align-items: flex-start;
+  padding: 0px;
+  margin: 0;
+  border: rgba(0, 74, 173, 0.7) solid 2px;
+  box-shadow: 2px 2px 15px #666666;
+}
+header .mwrap ul li .menu ul li {
+  margin: 0;
+  background-color: #333333;
+  width: 100%;
+  border: rgba(0, 74, 173, 0.2) solid 2px;
+  padding: 1rem;
+}
+header .mwrap ul li .menu ul li a {
+  background-color: transparent;
+  width: 100%;
+}
+header .mwrap ul li .menu ul li:hover {
+  background-color: #333333;
+  color: #000;
+  transition: color 0.9s ease;
+  animation-name: progreso;
+  animation-direction: alternate;
+  animation-delay: 200ms;
+  animation-duration: 1.3s;
+  animation-iteration-count: 1;
+  background-color: gray;
+  box-shadow: 2px 2px 30px rgba(0, 74, 173, 0.5);
+  transition: background-color 0.7s ease;
+  font-weight: bold;
+}
+header .mwrap ul li .menu ul li:hover a {
+  color: #003f94;
+  transition: background-color 0.4s ease;
+  transition: color 0.9s ease;
+  font-weight: bolder;
+  transform: scale(1.02);
+  filter: saturate(130%);
+  filter: blur(0.15);
 }
 
 /*# sourceMappingURL=estilos.css.map */

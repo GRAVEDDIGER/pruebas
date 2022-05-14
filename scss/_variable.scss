@@ -1,5 +1,5 @@
 $colorPrimario: #fff;
-$colorSecundario: #dad5d5;
+$colorSecundario: #004aad;
 $colorAcentos: #11bfbf;
 $colorAcento2: #7d7d7d;
 $fondoPrincipal: #000;
@@ -37,11 +37,13 @@ $tiempoLargo: 1.5s;
     display: flex;
     flex-direction: row;
 }
-%fxcol{
+
+%fxcol {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 }
+
 @function peso($peso) {
     /*funcion que determina el peso de las fuentes se pasa por parametro regular, medium o bold y reemplaza por el valor asigando arriba*/
     @return map-get($fP, $peso);
