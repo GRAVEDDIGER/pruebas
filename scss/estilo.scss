@@ -90,6 +90,38 @@ body {
     }
 }
 
+.mover {
+    opacity: 1 !important;
+    transition: all 1s ease;
+    transform: translatey(120px);
+}
+
+.mnuSel {
+
+    color: darken($colorTerciario, 5%) !important;
+    transition: color 0.7s ease;
+
+
+    &::before {
+        content: '{';
+        font-size: size(s);
+        position: absolute;
+        font-weight: bolder;
+        transform: translateX(-8px);
+        color: darken($colorAcento2, 5%);
+    }
+
+    &::after {
+        content: '}';
+        font-size: size(m);
+        position: absolute;
+        color: darken($colorAcento2, 5%);
+        font-weight: bolder;
+    }
+
+}
+
+
 
 header {
     @extend %fxrow;
@@ -102,140 +134,288 @@ header {
         height: 135px;
     }
 
+
+
     .mwrap {
         height: 100%;
         align-items: flex-end;
         z-index: 2;
         background-color: $fondoPrincipal;
+        display: flex;
 
-        ul {
-            @extend %fxrow;
-            @extend %centroabs;
-            padding: 1rem;
+        .hamburguesa {
+            opacity: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem;
+            z-index: -3;
 
-            li {
+
+            &:hover>div {
+                transition: all 0.7s ease;
+                transform: rotate(45deg);
+            }
+
+            &:hover>div::before {
+                top: 0;
+                transform: rotate(90deg);
+            }
+
+            &:hover>div::after {
+                top: 0;
+                transform: rotate(90deg);
+            }
+
+            >div {
+                display: none;
                 position: relative;
-                text-align: left;
-                color: $colorPrimario;
-                list-style: none;
-                margin: 0 1rem;
-                z-index: 2;
+                flex: none;
+                width: 100%;
+                height: 3px;
+                background: $colorSecundario;
+                align-items: center;
+                justify-content: center;
+                transition: all $tiempoCorto ease;
 
-                a {
-                    text-decoration: none;
-                    font-size: size(m);
-                    color: $colorPrimario;
-                    width: 100%;
+
+            }
+
+            >div::before {
+                content: '';
+                position: absolute;
+                height: 3px;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                top: -10px;
+                background-color: $colorSecundario;
+
+
+
+            }
+
+            >div::after {
+                content: '';
+                position: absolute;
+                height: 3px;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                top: 10px;
+                background-color: $colorSecundario;
+
+
+
+            }
+
+
+
+
+            >ul {
+                @extend %fxrow;
+                @extend %centroabs;
+                padding: 1rem;
+
+                >li {
+                    position: relative;
                     text-align: left;
+                    color: $colorPrimario;
+                    list-style: none;
+                    margin: 0 1rem;
+                    z-index: 2;
 
-                    &:hover {
-                        color: darken($colorTerciario, 5%);
-                        transition: color 0.7s ease;
-                    }
-
-
-                }
-
-                .drop {
-                    z-index: 4;
-
-                    a {
-                        z-index: 5;
-                    }
-                }
-
-                .drop:hover::before {
-                    content: '{';
-                    font-size: size(s);
-                    position: absolute;
-                    font-weight: bolder;
-                    transform: translateX(-8px);
-                    color: darken($colorAcento2, 5%);
-
-                }
-
-                .drop:hover::after {
-                    content: '}';
-                    font-size: size(m);
-                    position: absolute;
-                    color: darken($colorAcento2, 5%);
-                    font-weight: bolder;
-
-                }
-
-                .menu {
-                    @extend %fxcol;
-                    position: absolute;
-                    opacity: 0;
-                    float: left;
-                    width: 20vw;
-                    padding: 0;
-                    padding-top: 1rem;
-                    margin: 0;
-                    z-index: -1;
-
-                    ul {
-                        @extend %fxcol;
+                    >a {
+                        text-decoration: none;
+                        font-size: size(m);
+                        color: $colorPrimario;
+                        width: 100%;
                         text-align: left;
-                        align-items: flex-start;
-                        padding: 00px;
+
+                        &:hover {
+                            color: darken($colorTerciario, 5%);
+                            transition: color 0.7s ease;
+                        }
+
+
+                    }
+
+                    .drop {
+                        z-index: 4;
+
+                        a {
+                            z-index: 5;
+                        }
+                    }
+
+                    .drop:hover::before {
+                        content: '{';
+                        font-size: size(s);
+                        position: absolute;
+                        font-weight: bolder;
+                        transform: translateX(-8px);
+                        color: darken($colorAcento2, 5%);
+
+                    }
+
+                    .drop:hover::after {
+                        content: '}';
+                        font-size: size(m);
+                        position: absolute;
+                        color: darken($colorAcento2, 5%);
+                        font-weight: bolder;
+
+                    }
+
+                    .menu {
+                        @extend %fxcol;
+                        position: absolute;
+                        opacity: 0;
+                        top: -100px;
+                        float: left;
+                        width: 22vw;
+                        padding: 0;
+                        padding-top: 1rem;
                         margin: 0;
-                        border: transparentize($colorAcentos, 0.3) solid 2px;
-                        box-shadow: 2px 2px 15px lighten($fondoPrincipal, 40%);
+                        z-index: -1;
+                        transition: all 1s ease;
 
-
-                        li {
+                        >ul {
                             @extend %fxcol;
-
+                            text-align: left;
+                            align-items: flex-start;
+                            padding: 00px;
                             margin: 0;
-                            background-color: $fondoPrincipal;
-                            width: 100%;
-                            border: transparentize($colorAcento2, 0.8) solid 2px;
-                            padding: 1rem;
+                            border: transparentize($colorSecundario, 0.3) solid 2px;
+                            box-shadow: 2px 2px 15px lighten($fondoPrincipal, 40%);
 
 
+                            >li {
+                                @extend %fxcol;
 
-                            a {
-                                background-color: transparent;
+                                margin: 0;
+                                background-color: $fondoPrincipal;
                                 width: 100%;
+                                border: transparentize($colorSecundario, 0.8) solid 2px;
+                                padding: 1rem;
 
 
 
-                            }
-
-                            &:hover {
-                                background-color: lighten($fondoPrincipal, 20%);
-
-                                color: #000;
-                                transition: color 0.9s ease;
-                                animation-name: progreso;
-                                animation-direction: alternate;
-                                animation-delay: 200ms;
-                                animation-duration: 0.8s;
-                                animation-iteration-count: 1;
-                                background-color: lighten($fondoPrincipal, 50%);
-                                box-shadow: 2px 2px 30px transparentize($colorSecundario, 0.5);
-                                transition: background-color 0.7s ease;
-
-                                font-weight: bold;
-                            }
-
-                            &:hover a {
-                                color: darken($colorAcentos, 5%);
+                                >a {
+                                    background-color: transparent;
+                                    width: 100%;
 
 
-                                transition: background-color 0.4s ease;
-                                transition: color 0.9s ease;
-                                font-weight: bolder;
-                                transform: scale(1.02);
-                                filter: saturate(130%);
-                                filter: blur(0.15);
 
+                                }
+
+                                &:hover {
+                                    background-color: lighten($fondoPrincipal, 20%);
+
+                                    color: #000;
+                                    transition: color 0.9s ease;
+                                    animation-name: progreso;
+                                    animation-direction: alternate;
+                                    animation-delay: 200ms;
+                                    animation-duration: 0.8s;
+                                    animation-iteration-count: 1;
+                                    background-color: lighten($fondoPrincipal, 50%);
+                                    box-shadow: 2px 2px 30px transparentize($colorSecundario, 0.5);
+                                    transition: background-color 0.7s ease;
+
+                                    font-weight: bold;
+                                }
+
+                                &:hover>a {
+                                    color: darken($colorAcentos, 5%);
+                                    text-align: center;
+
+                                    transition: background-color 0.4s ease;
+                                    transition: color 0.9s ease;
+                                    font-weight: bolder;
+                                    transform: scale(1.02);
+                                    filter: saturate(130%);
+                                    filter: blur(0.15);
+
+
+                                }
+
+                                &:hover>a::before {
+                                    content: ' < ';
+                                    font-weight: bolder;
+                                }
+
+                                &:hover>a::after {
+                                    content: ' > ';
+                                    font-weight: bolder;
+                                }
 
                             }
                         }
                     }
                 }
+            }
+        }
+
+        @include s {
+            .hamburguesa {
+                width: 60px;
+                height: 60px;
+                border: 2px solid $colorSecundario;
+                box-shadow: 2px 2px 30px $colorSecundario;
+                box-shadow: 2px 2px 10px $colorSecundario inset;
+                justify-content: center;
+
+                >div {
+                    display: flex;
+                    z-index: 5;
+                }
+
+                >ul {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.menuPrin {
+    position: absolute;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap;
+    width: 200px;
+    top: 62px;
+    right: 0px;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid $colorAcentos;
+    box-shadow: 2px 2px 15px $colorAcentos;
+    padding: 0 !important;
+
+    >li {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 100%;
+        border: 2px solid transparentize($colorAcentos, 0.6);
+        display: flex;
+
+
+
+        >a {
+            z-index: 10 !important;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center !important;
+            width: 100%;
+
+            >ul {
+                z-index: -10;
             }
         }
     }

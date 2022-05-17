@@ -1,31 +1,16 @@
-const apareceArriba = idEtq => {
-    const elemento = document.getElementById(idEtq);
-    let clientrec = elemento.getBoundingClientRect()
-    let pX = clientrec.left;
-    let pY = clientrec.top;
-    let he = clientrec.height;
+function aparecer(idEtq,idMnu){
+let menu = document.getElementById(idEtq);
+let opcion =document.getElementById(idMnu);
+if (menu.classList.contains("mover")!=true){
+menu.classList.add("mover");
+opcion.classList.add("mnuSel");
+}else{menu.classList.remove("mover");
+opcion.classList.remove("mnuSel")
+}
+}
 
-    pY = pY - he;
-    elemento.style.top = pY + "px"
-    let q = window.getComputedStyle(elemento).getPropertyValue("opacity")
-    if (q != 0) {
-        elemento.style.opacity = 0;
-
-    } else {
-        let ada = setInterval(() => {
-            q = window.getComputedStyle(elemento).getPropertyValue("opacity")
-            let op1 = Math.abs(1 / (pY + 60)) //error aqui
-            console.log(q)
-            let opa = parseInt(q) + op1
-            elemento.style.opacity = opa;
-            if (pY < 21) {
-                pY++
-                elemento.style.top = pY + "px"
-            } else {
-                clearInterval(ada);
-            }
-        }, 2);
-    }
-
-
+function hamb(id1,id2){
+    let menu = document.getElementById(id1);
+    let boton= document.getElementById(id2);
+    menu.classList.add("menuPrin");
 }

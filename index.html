@@ -11,25 +11,31 @@
     <header>
       <img src="img/logo.svg" alt="" />
       <div class="mwrap">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a class="drop" onclick='apareceArriba("servicios");' href="#"
-              >Servicios</a
-            >
-            <div class="menu" id="servicios">
-              <ul>
-                <li><a href="">Desarrollo Web</a></li>
-                <li><a href="">Desarrollo de aplicaciones</a></li>
-                <li><a href="">Mantenimiento de sitios Web</a></li>
-                <li><a href="">Maquetado y Wireframing</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="">Productos</a></li>
-          <li><a href="">Referencias</a></li>
-          <li><a href="">Contacto</a></li>
-        </ul>
+        <div class="hamburguesa" id="hamburguesa" onclick='hamb("menuPrincipal","hamburguesa")''>
+          <div></div>
+          <ul id="menuPrincipal">
+            <li><a href="index.html">Home</a></li>
+            <li>
+              <a
+                class="drop"
+                onclick='aparecer("servicios","serviciosMnu");'
+                id="serviciosMnu"
+                href="#"
+                >Servicios</a
+              >
+              <div class="menu" id="servicios">
+                <ul>
+                  <li><a href="">Desarrollo Web</a></li>
+                  <li><a href="">Desarrollo de aplicaciones</a></li>
+                  <li><a href="">Fotografia de producto</a></li>
+                  <li><a href="">Diseño de marca</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="">Referencias</a></li>
+            <li><a href="">Contacto</a></li>
+          </ul>
+        </div>
       </div>
     </header>
 
