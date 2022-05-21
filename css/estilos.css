@@ -195,6 +195,7 @@ body {
 }
 .mover {
   opacity: 1 !important;
+  display: flex !important;
   transition: all 1s ease;
   transform: translatey(120px);
 }
@@ -307,6 +308,7 @@ header .mwrap .hamburguesa > ul > li > a {
   color: #fff;
   width: 100%;
   text-align: left;
+  z-index: 5;
 }
 header .mwrap .hamburguesa > ul > li > a:hover {
   color: #118de1;
@@ -339,6 +341,7 @@ header .mwrap .hamburguesa > ul > li .menu {
   top: -100px;
   float: left;
   width: 22vw;
+  min-width: 250px;
   padding: 0;
   padding-top: 1rem;
   margin: 0;
@@ -361,8 +364,10 @@ header .mwrap .hamburguesa > ul > li .menu > ul > li {
   padding: 1rem;
 }
 header .mwrap .hamburguesa > ul > li .menu > ul > li > a {
+  color: #a6a6a6;
   background-color: transparent;
   width: 100%;
+  text-decoration: dotted;
 }
 header .mwrap .hamburguesa > ul > li .menu > ul > li:hover {
   background-color: #404040;
@@ -389,11 +394,11 @@ header .mwrap .hamburguesa > ul > li .menu > ul > li:hover > a {
   filter: blur(0.15);
 }
 header .mwrap .hamburguesa > ul > li .menu > ul > li:hover > a::before {
-  content: " < ";
+  content: " <";
   font-weight: bolder;
 }
 header .mwrap .hamburguesa > ul > li .menu > ul > li:hover > a::after {
-  content: " > ";
+  content: "> ";
   font-weight: bolder;
 }
 @media (max-width: 768px) {
@@ -404,6 +409,40 @@ header .mwrap .hamburguesa > ul > li .menu > ul > li:hover > a::after {
     box-shadow: 2px 2px 30px #003EAD;
     box-shadow: 2px 2px 10px #003EAD inset;
     justify-content: center;
+  }
+  header .mwrap .hamburguesa > ul > li {
+    display: flex;
+    flex-direction: column;
+  }
+  header .mwrap .hamburguesa .menuPrin {
+    min-width: 250px;
+  }
+  header .mwrap .hamburguesa > ul > li .menu {
+    display: none;
+    min-width: 250px;
+    position: relative !important;
+  }
+  header .mwrap .hamburguesa > ul > li .mover {
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    min-width: 0;
+  }
+  header .mwrap .hamburguesa > ul > li .mover > ul {
+    border: none !important;
+    box-shadow: none;
+  }
+  header .mwrap .hamburguesa > ul > li .mover > ul > li {
+    border: none;
+    border-top: 2px solid rgba(140, 27, 0, 0.4);
+  }
+  header .mwrap .hamburguesa > ul > li .mover > ul > li > a {
+    font-size: 16px;
+  }
+  header .mwrap .hamburguesa > ul > li .mover > ul > li > a:hover {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
   }
   header .mwrap .hamburguesa > div {
     display: flex;
