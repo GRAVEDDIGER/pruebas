@@ -485,4 +485,16 @@ header .mwrap .hamburguesa > ul > li .menu > ul > li:hover > a::after {
   z-index: -10;
 }
 
+main .overlay {
+  width: 100%;
+  background: linear-gradient(#8C1B00, #CE7F3A);
+  z-index: 3;
+  opacity: 30%;
+}
+main .teclado {
+  width: 100%;
+  background: linear-gradient(#CE7F3A, #8C1B00);
+  z-index: -1;
+}
+
 /*# sourceMappingURL=estilos.css.map */

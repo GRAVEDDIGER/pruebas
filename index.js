@@ -23,3 +23,16 @@ console.log(estilo.getPropertyValue("color"));
 
 }
 }
+const principal = document.querySelector(".principal")
+const fragmento = document.createDocumentFragment()
+const div =document.createElement("DIV")
+const imagen1 = document.createElement("IMG")
+imagen1.src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2018/04/296611-teclado-mecanico-historia-tipos-que-deberias-usarlo.jpg?itok=uj5Hh9hv"
+imagen1.alt="Teclado"
+imagen1.classList.add("teclado")
+div.classList.add("overlay")
+principal.appendChild(div)
+const divdeimagen =document.querySelector(".overlay")
+divdeimagen.appendChild(imagen1)
+
+

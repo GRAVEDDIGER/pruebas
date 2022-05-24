@@ -471,3 +471,20 @@ header {
         }
     }
 }
+
+main {
+    .overlay {
+        width: 100%;
+        background: linear-gradient($colorAcentos, $colorAcento2);
+        z-index: 3;
+        opacity: 30%;
+    }
+
+
+
+    .teclado {
+        width: 100%;
+        background: linear-gradient($colorAcento2, $colorAcentos);
+        z-index: -1;
+    }
+}
